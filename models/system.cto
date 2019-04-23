@@ -1,0 +1,185 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+namespace org.foodsupplychain.system
+import org.foodsupplychain.user.Creator
+import org.foodsupplychain.user.Inspector
+import org.foodsupplychain.user.Producer
+import org.foodsupplychain.user.Exporter
+import org.foodsupplychain.user.Carrier
+import org.foodsupplychain.user.Distributor
+import org.foodsupplychain.user.Processor
+import org.foodsupplychain.user.Retailer
+
+
+enum BatchStatus {
+  o Creation
+  o Inspector
+  o Producer
+  o Exporter
+  o Carrier
+  o Distributor
+  o Processor
+  o Retailer
+}
+
+asset Batch identified by batch_id {
+  o String batch_id
+  o BatchStatus batch_status default = 'Creation'
+  o String creation_registration_no optional
+  o String creation_food_name optional
+  o String creation_other_details optional
+  
+  o String inspection_process_name optional
+  o String inspection_certificate_no optional
+  o String inspection_other_details optional
+  
+  o String producer_temperature_used optional
+  o String producer_humidity optional
+  o String producer_other_details optional
+  
+  o String exporter_package_id optional
+  o String exporter_shipment_id optional
+  o String exporter_destination_address optional
+  o String exporter_qty optional
+  o String exporter_other_details optional
+  o DateTime exporter_loading_date optional
+  
+  o String carrier_id optional
+  o String carrier_shipment_id optional
+  o String carrier_maintained_temperature optional
+  o String carrier_humidity optional
+  o String carrier_other_details optional
+  o DateTime carrier_shipped_date optional
+  o DateTime carrier_delivery_date optional
+  
+  o String distributor_certificate_id optional
+  o String distributor_warehouse_name optional 
+  o String distributor_warehouse_address optional
+  o String distributor_storage_temperature optional
+  o String distributor_storage_humidity optional
+  o String distributor_quantity optional
+  o String distributor_other_details optional
+  
+  o String processor_temperature optional
+  o String processor_internal_batch_id optional
+  o DateTime processor_date optional
+  o String processor_other_details optional
+  
+  o DateTime retailer_expiry_date optional
+  o String retailer_temperature optional
+  o String retailer_other_details optional
+  
+  --> Creator creator optional
+  --> Inspector inspector optional
+  --> Producer producer optional
+  --> Exporter exporter optional
+  --> Carrier carrier optional
+  --> Distributor distributor optional
+  --> Processor processor optional
+  --> Retailer retailer optional
+}
+
+transaction BatchCreation{
+  --> Creator creator 
+  --> Inspector inspector_handler
+  
+  o String batch_id optional
+  o String registration_no optional
+  o String food_name optional
+  o String other_details optional
+}
+  
+transaction BatchInspection{
+  --> Batch batch
+  --> Inspector inspector_handler
+  --> Producer producer_handler
+  
+  o String process_name optional
+  o String certificate_no optional
+  o String other_details optional
+}
+  
+transaction BatchProducer{
+  --> Batch batch
+  --> Producer producer_handler
+  --> Exporter exporter_handler
+  
+  
+  o String temperature_used optional
+  o String humidity optional
+  o String other_details optional
+}  
+  
+transaction BatchExporter{
+  --> Batch batch
+  --> Exporter exporter_handler
+  --> Carrier carrier_handler
+  
+  o String package_id optional
+  o String shipment_id optional
+  o String destination_address optional
+  o String qty optional
+  o String other_details optional
+  o DateTime loading_date optional
+
+}
+
+transaction BatchCarrier{
+  --> Batch batch
+  --> Carrier carrier_handler
+  --> Distributor distributor_handler
+  
+  o String id optional
+  o String shipment_id optional
+  o String maintained_temperature optional
+  o String humidity optional
+  o String other_details optional
+  o DateTime shipped_date optional
+  o DateTime delivery_date optional
+}  
+
+
+transaction BatchDistributor{
+  --> Batch batch
+  --> Distributor distributor_handler
+  --> Processor processor_handler
+  
+  o String certificate_id optional
+  o String warehouse_name optional 
+  o String warehouse_address optional
+  o String storage_temperature optional
+  o String storage_humidity optional
+  o String quantity optional
+  o String other_details optional
+}  
+
+transaction BatchProcessor{
+  --> Batch batch
+  --> Processor processor_handler
+  --> Retailer retailer_handler
+  
+  o String temperature optional
+  o String internal_batch_id optional
+  o DateTime date optional
+  o String other_details optional
+}  
+
+transaction BatchRetailer{
+  --> Batch batch
+  --> Retailer retailer_handler
+  
+  o DateTime expiry_date optional
+  o String temperature optional
+  o String other_details optional
+}  

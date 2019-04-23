@@ -1,0 +1,49 @@
+/**
+ * New model file
+ */
+
+namespace org.foodsupplychain.user
+
+enum UserStatus {
+  o Active
+  o InActive
+}
+
+abstract participant User identified by user_id {
+    o String user_id
+    o String name
+  o String contact
+  o String role
+  o String profile_image
+}
+
+participant Creator extends User {
+    o UserStatus status
+}
+participant Inspector extends User {
+    o UserStatus status
+}
+
+participant Producer extends User {
+    o UserStatus status
+}
+
+participant Exporter extends User {
+    o UserStatus status
+}
+
+participant Carrier extends User {
+    o UserStatus status
+}
+
+participant Distributor extends User {
+    o UserStatus status
+}
+
+participant Processor extends User {
+    o UserStatus status
+}
+
+participant Retailer extends User {
+    o UserStatus status
+}
