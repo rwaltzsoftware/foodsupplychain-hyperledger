@@ -1,0 +1,866 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/plugins/images/favicon.ico">
+    <title>RWaltz</title>
+  
+
+    <style type="text/css">
+        .float-right
+        {
+            float: right;
+        }
+
+        .parsley-required , .red{
+            color: red;
+        }
+    </style>
+
+    <!-- <script src="http://www.w3schools.com/lib/w3data.js"></script> -->
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <ngx-spinner></ngx-spinner>
+
+    
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0 sidebar">
+            <div class="navbar-header"> 
+                <div class="top-left-part"><a class="logo" href="index.php"><b><img src="assets/plugins/images/rwaltz.png" alt="home" style="width: 188%;" /></b><!-- <span class="hidden-xs"> RWaltz</span> --></a>
+                </div>
+               <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                            <span class="inine-text"><i class="fa fa-users"></i> Total Users: </span>
+                            <span class="icon-heads"><b id="totalUsers">2</b></span> 
+                        </a>
+                    </li>    
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                           
+                             <span class="inine-text"><i class="fa fa-users"></i> Total Roles: </span>
+                            <span class="icon-heads"><b>7</b></span> 
+                        </a>
+                    </li> 
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                           
+                            <span class="inine-text"><i class="fa fa-file"></i> Total Batches: </span>
+                            <span class="icon-heads"><b id="totalBatch">2</b></span> 
+
+                        </a>
+                    </li> 
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                            <i class="fa fa-qrcode"></i>
+                            <div class="notify">
+                                <span class="heartbit"></span>
+                                <span class="point"></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu mailbox animated flipInY">
+                            <li>
+                                <div class="drop-title">User & Contract Address</div>
+                            </li>
+                            <li>
+                                <div class="message-center">
+                                    <a href="javascript:void(0);">
+                                        <div class="mail-contnet">
+                                            <h5>YOUR ADDRESS</h5> 
+                                            <span class="mail-desc" id="currentUserAddress"></span> 
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="mail-contnet">
+                                            <h5>FOOD SUPPLY CHAIN CONTRACT <br/> ADDRESS</h5> 
+                                            <span class="mail-desc" id="foodSupplychainContractAddress"></span> 
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="mail-contnet">
+                                            <h5>FOOD SUPPLY CHAIN SHIPING & <br/>LOGISTIC CONTRACT ADDRESS</h5> 
+                                            <span class="mail-desc" id="logisticContractAddress"></span> 
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="mail-contnet">
+                                            <h5>USER CONTRACT ADDRESS</h5> 
+                                            <span class="mail-desc" id="supplyChainUserAddress"></span> 
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-messages -->
+                    </li>
+
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user"></i>
+                            <div class="notify">
+                                <span class="heartbit"></span>
+                                <span class="point"></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu mailbox animated flipInY">
+                            <li>
+                                <div class="drop-title">User Roles</div>
+                            </li>
+                            <li>
+                                <div class="message-center">
+                                    <a href="javascript:void(0);">
+                                        <div class="user-img"> <button type="button" class="btn btn-info btn-circle" title="Farm Inspection">
+                                                    <i class="fa fa-user"></i> 
+                                                </button></div>
+                                        <div class="mail-contnet">
+                                            <h5>Farm Inspection</h5> 
+                                            <!-- <span class="mail-desc">&nbsp;</span> -->
+                                        </div>
+                                        <span class="clearfix"></span>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="user-img"> <button type="button" class="btn btn-success btn-circle" title="Farm Inspection">
+                                                    <i class="fa fa-user"></i> 
+                                                </button></div>
+                                        <div class="mail-contnet">
+                                            <h5>Producer</h5> 
+                                            <!-- <span class="mail-desc">&nbsp;</span> -->
+                                             <span class="clearfix"></span>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="user-img"> <button type="button" class="btn btn-warning btn-circle" title="Farm Inspection">
+                                                    <i class="fa fa-user"></i> 
+                                                </button></div>
+                                        <div class="mail-contnet">
+                                            <h5>Exporter</h5> 
+                                            <!-- <span class="mail-desc">&nbsp;</span> -->
+                                             <span class="clearfix"></span>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="user-img"> <button type="button" class="btn btn-primary btn-circle" title="Farm Inspection">
+                                                    <i class="fa fa-user"></i> 
+                                                </button></div>
+                                        <div class="mail-contnet">
+                                            <h5>Carrier</h5> 
+                                            <!-- <span class="mail-desc">&nbsp;</span> -->
+                                             <span class="clearfix"></span>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="user-img"> <button type="button" class="btn btn-facebook btn-circle" title="Farm Inspection">
+                                                    <i class="fa fa-user"></i> 
+                                                </button></div>
+                                        <div class="mail-contnet">
+                                            <h5>Distributor</h5> 
+                                            <!-- <span class="mail-desc">&nbsp;</span> -->
+                                             <span class="clearfix"></span>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="user-img"> <button type="button" class="btn btn-default btn-circle" title="Farm Inspection">
+                                                    <i class="fa fa-user"></i> 
+                                                </button></div>
+                                        <div class="mail-contnet">
+                                            <h5>Processor</h5> 
+                                            <!-- <span class="mail-desc">&nbsp;</span> -->
+                                             <span class="clearfix"></span>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);">
+                                        <div class="user-img"> <button type="button" class="btn btn-youtube btn-circle" title="Farm Inspection">
+                                                    <i class="fa fa-user"></i> 
+                                                </button></div>
+                                        <div class="mail-contnet">
+                                            <h5>Retailer</h5> 
+                                            <!-- <span class="mail-desc">&nbsp;</span> -->
+                                             <span class="clearfix"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-messages -->
+                    </li>
+                    <!-- /.dropdown -->
+
+                  
+                    <!-- /.dropdown -->
+                </ul>
+            </div>
+        </nav>
+        <!-- Left navbar-header -->
+
+        <!-- Left navbar-header end -->
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+
+            <style type="text/css">
+                .completed_info,.verified_info{
+                    color: green;
+                }
+
+                .processing_info{
+                    color: #ffcc00;
+                }
+
+                .not_complete_info{
+                    color: #ff471a;
+                }
+            </style>
+    
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Dashboard</h4>
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success" id="divOngoingTransaction" style="display: none">Ongoing Transaction: <span id="linkOngoingTransaction">None</span> </div>
+                    </div>    
+                </div>
+
+                <!--row -->
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-4 col-md-4  col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Batch Details</h3>
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-pie-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8  col-sm-12">
+                        <div class="white-box defualt-box-height">
+                            <a href="javascript:void(0);" id="userFormClick" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light" onclick="javascript:$('#userFormModel').modal()">Create User</a>
+                            <h3 class="box-title">&nbsp;Currently Showing </h3> 
+                            <select class="form-control" class="pull-left" [(ngModel)]="selectedUserListing" (ngModelChange)="onUserChangeListing($event)">
+                                <option *ngFor="let userType of arrUserType" [ngValue]="userType.name">{{userType.name}}</option>
+                            </select>
+                            
+
+                            
+                            <data-table id="my-table"
+                                    [title]="'Users'"
+                                    [items]="arrUserListing"
+                                    [itemCount]="arrUserListingCount"
+                            >
+                                <data-table-column
+                                [property]="'user_id'"
+                                [header]="'UserID'"
+                                >
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'profile_image'"
+                                [header]="'Profile Image'"
+                                
+                                >
+                                <ng-template #dataTableCell let-item="item">
+                                    <img src="{{ item.profile_image }}" width="100" height="100"/>
+                                </ng-template>
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'name'"
+                                [header]="'Name'"
+                                >
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'contact'"
+                                [header]="'Contact'"
+                                >
+                                </data-table-column>
+
+                                <data-table-column
+                                [header]="'Status'"
+                                >
+                                <ng-template #dataTableCell let-item="item">
+                                    <button *ngIf="item.status == 'Active'" class="btn btn-success" (click)="toggleUserStatus(item,'InActive')" >Active</button>
+                                    <button *ngIf="item.status != 'Active'" class="btn btn-danger" (click)="toggleUserStatus(item,'Active')" >Blocked</button>
+                                </ng-template>
+                                </data-table-column>
+
+                                <data-table-column
+                                [header]="'Action'"
+                                >
+                                <ng-template #dataTableCell let-item="item">
+                                    <a href="javascript::void(0)" onclick="javascript:$('#userEditFormModel').modal()" (click)="setActiveUserEdit(item)"><i class="fa fa-pencil"></i></a>
+                                </ng-template>
+                                </data-table-column>
+
+                            
+                            
+                          </data-table>
+
+                            <!-- <div class="table-responsive">
+                                <table class="table product-overview" id="tblUser">
+                                    <thead>
+                                        <tr>
+                                            <th>User Image</th>
+                                            <th>User Address</th>
+                                            <th>Name</th>
+                                            <th>Contact No.</th>
+                                            <th>Role</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                    </tbody>
+                                </table>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                               <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="white-box">
+                             <a href="javascript:void(0);" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light" (click)="showBatchCreation()" >Create Batch</a>
+                            <!-- <div class="table-responsive">
+                                <table class="table product-overview" id="adminCultivationTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Batch ID</th>
+                                            <th>QR-Code</th>
+                                            <th>Batch Initialize</th>
+                                            <th>Farm Inspector</th>
+                                            <th>Producer</th>
+                                            <th>Exporter</th>
+                                            <th>Carrier</th>
+                                            <th>Distributor</th>
+                                            <th>Processor</th>
+                                            <th>Retailer</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         <tr>
+                                             <td colspan="10" align="center">No Data Available</td>
+                                         </tr>   
+                                    </tbody>
+                                </table>
+                            </div> -->
+
+                            <data-table id="batch-table"
+                                    [title]="'Batches Overview'"
+                                    [items]="arrBatchListing"
+                                    [itemCount]="arrBatchListingCount"
+                            >
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Batch ID'"
+                                >
+                                </data-table-column>
+
+                                
+
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Inspector'"
+                                >
+                                    <ng-template #dataTableCell let-item="item">
+                                        <i *ngIf="item.inspector && item.batch_status == 'Inspector'" class="fa fa-check-circle fa-2x text-success" (click)="showBatchDetails(item,'inspection')"></i>
+                                        <i *ngIf="!item.inspector || (item.inspector && item.batch_status != 'Inspector')" class="fa fa-times-circle fa-2x text-danger" ></i>
+                                    </ng-template>
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Producer'"
+                                >
+                                    <ng-template #dataTableCell let-item="item">
+                                        <i *ngIf="item.producer && item.batch_status == 'Producer'" class="fa fa-check-circle fa-2x text-success" (click)="showBatchDetails(item,'producer')"></i>
+                                        <i *ngIf="!item.producer || (item.producer && item.batch_status != 'Producer')" class="fa fa-times-circle fa-2x text-danger" ></i>
+                                    </ng-template>
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Exporter'"
+                                >
+                                    <ng-template #dataTableCell let-item="item">
+                                        <i *ngIf="item.exporter && item.batch_status == 'Exporter'" class="fa fa-check-circle fa-2x text-success" (click)="showBatchDetails(item,'exporter')"></i>
+                                        <i *ngIf="!item.exporter || (item.exporter && item.batch_status != 'Exporter')" class="fa fa-times-circle fa-2x text-danger" ></i>
+                                    </ng-template>
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Carrier'"
+                                >
+                                    <ng-template #dataTableCell let-item="item">
+                                        <i *ngIf="item.carrier && item.batch_status == 'Carrier'" class="fa fa-check-circle fa-2x text-success" (click)="showBatchDetails(item,'carrier')"></i>
+                                        <i *ngIf="!item.carrier || (item.carrier && item.batch_status != 'Carrier')" class="fa fa-times-circle fa-2x text-danger" ></i>
+                                    </ng-template>
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Distributor'"
+                                >
+                                    <ng-template #dataTableCell let-item="item">
+                                        <i *ngIf="item.distributor && item.batch_status == 'Distributor'" class="fa fa-check-circle fa-2x text-success" (click)="showBatchDetails(item,'distributor')"></i>
+                                        <i *ngIf="!item.distributor || (item.distributor && item.batch_status != 'Distributor')" class="fa fa-times-circle fa-2x text-danger" ></i>
+                                    </ng-template>
+                                </data-table-column>
+                                
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Processor'"
+                                >
+                                    <ng-template #dataTableCell let-item="item">
+                                        <i *ngIf="item.processor && item.batch_status == 'Processor'" class="fa fa-check-circle fa-2x text-success" (click)="showBatchDetails(item,'processor')"></i>
+                                        <i *ngIf="!item.processor || (item.processor && item.batch_status != 'Processor')" class="fa fa-times-circle fa-2x text-danger" ></i>
+                                    </ng-template>
+                                </data-table-column>
+
+                                <data-table-column
+                                [property]="'batch_id'"
+                                [header]="'Retailer'"
+                                >
+                                    <ng-template #dataTableCell let-item="item">
+                                        <i *ngIf="item.retailer && item.batch_status == 'Retailer'" class="fa fa-check-circle fa-2x text-success" (click)="showBatchDetails(item,'retailer')"></i>
+                                        <i *ngIf="!item.retailer || (item.retailer && item.batch_status != 'Retailer')" class="fa fa-times-circle fa-2x text-danger" ></i>
+                                    </ng-template>
+                                </data-table-column>
+
+
+                            </data-table>
+                        </div>
+                    </div>
+                </div>
+                <!--row -->
+                
+                <!-- /.row -->
+  
+            </div>
+            <!-- /.container-fluid -->
+
+            <div id="batchFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding-top: 170px;" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title">Add Batch</h2>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="batchAddFrm">
+                            <fieldset style="border:0;">
+                                <div class="form-group">
+                                    <label class="control-label" for="farmerRegistrationNo">Registration No <i class="red">*</i></label>
+                                    <input type="text" class="form-control" id="farmerRegistrationNo" name="registration_no" placeholder="Registration No" formControlName="registration_no">
+                                </div> 
+                                <div class="form-group">
+                                    <label class="control-label" for="foodName">Food Name <i class="red">*</i></label>
+                                    <input type="text" class="form-control" id="foodName" name="foodName" placeholder="Food Name" formControlName="food_name">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="control-label" for="otherDetails">Other Details <i class="red">*</i></label>
+                                    <input type="text" class="form-control" id="otherDetails" name="otherDetails" placeholder="Farmer Name" formControlName="other_details">
+                                </div>                              
+                                <div class="form-group">
+                                    <label class="control-label" for="batchCreator">Creator <i class="red">*</i></label>
+                                    <select class="form-control" formControlName="creator" id="batchCreator">
+                                        <option *ngFor="let creator of arrCreatorList" [ngValue]="creator['$class'] + '#' + creator.user_id">{{creator.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="batchInspector">Inspector <i class="red">*</i></label>
+                                    <select class="form-control" formControlName="inspector_handler" id="batchInspector">
+                                        <option *ngFor="let inspector of arrInspectorList" [ngValue]="inspector['$class'] + '#' + inspector.user_id">{{inspector.name}}</option>
+                                    </select>
+                                </div> 
+                                
+                            </fieldset>
+                          </form>  
+                        </div>
+                        <div class="modal-footer">
+                             <button *ngIf="batchAddFrm.valid" type="button" (click)="saveBatch(batchAddFrm,'add');" class="fcbtn btn btn-primary btn-outline btn-1f">Submit</button>
+                             <button *ngIf="!batchAddFrm.valid" type="button" class="fcbtn btn warning btn-outline btn-1f">Please fill All fields with Valid Data</button>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="userFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding-top: 170px;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title" id="userModelTitle">Add User</h2>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="userAddFrm">
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="userID">ID <i class="red">*</i></label>
+                                        <input type="digits" class="form-control" id="userID" name="user_id" formControlName="user_id" placeholder="User ID" >
+                                    </div> 
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label" for="userName">Name <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userName" name="name" formControlName="name" placeholder="Name" >
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="userContactNo">Contact <i class="red">*</i></label>
+                                        <input type="digits" class="form-control" id="userContactNo" formControlName="contact" name="contact" placeholder="Contact No." maxlength="12" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="userRoles">Role <i class="red">*</i></label>
+                                      
+                                        <select class="form-control" id="userRoles"   formControlName="role" name="role" readonly>
+                                            <option *ngFor="let userType of arrUserType" [ngValue]="userType.name">{{userType.name}}</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label" for="userProfileHash">Profile Image URL <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userProfileHash" name="profile_image" formControlName="profile_image" placeholder="User Profile Url" >
+                                        
+                                    </div>
+                                </fieldset>
+                              </form>
+                        </div>
+                        <div class="modal-footer">
+                            <i style="display: none;" class="fa fa-spinner fa-spin"></i>
+                             <button *ngIf="userAddFrm.valid" type="button" (click)="saveUser(userAddFrm,'add');" class="fcbtn btn btn-primary btn-outline btn-1f">Submit</button>
+                             <button *ngIf="!userAddFrm.valid" type="button" class="fcbtn btn warning btn-outline btn-1f">Please fill All fields with Valid Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="userEditFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding-top: 170px;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title" id="userEditModelTitle">Edit User</h2>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="userEditFrm">
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="userID">ID <i class="red">*</i></label>
+                                        <input type="digits" readonly class="form-control" id="userID" name="user_id" formControlName="user_id" placeholder="User ID" >
+                                    </div> 
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label" for="userName">Name <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userName" name="name" formControlName="name" placeholder="Name" >
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="userContactNo">Contact <i class="red">*</i></label>
+                                        <input type="digits" class="form-control" id="userContactNo" formControlName="contact" name="contact" placeholder="Contact No." maxlength="12" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="userRoles">Role <i class="red">*</i></label>
+                                      
+                                        <select class="form-control" id="userRoles"   formControlName="role" name="role" >
+                                            <option *ngFor="let userType of arrUserType" [ngValue]="userType.name">{{userType.name}}</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label" for="userProfileHash">Profile Image URL <i class="red">*</i></label>
+                                        <input type="text" class="form-control" id="userEditProfileHash" name="profile_image" formControlName="profile_image" placeholder="User Profile Url" >
+                                        
+                                    </div>
+                                </fieldset>
+                              </form>
+                        </div>
+                        <div class="modal-footer">
+                            <i style="display: none;" class="fa fa-spinner fa-spin"></i>
+                             <button *ngIf="userEditFrm.valid" type="button" (click)="saveUser(userEditFrm,'edit');" class="fcbtn btn btn-primary btn-outline btn-1f">Submit</button>
+                             <button *ngIf="!userEditFrm.valid" type="button" class="fcbtn btn warning btn-outline btn-1f">Please fill All fields with Valid Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="batchOverviewModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 170px;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title" id="batchTitle">Batch Details</h2>
+                        </div>
+                        <div class="modal-body">
+                                <fieldset style="border:0;" id="informationFields">
+
+                                       
+
+                                    <section *ngIf="activeBatchSection == 'creation'">
+                                        <div class="form-group">
+                                            <b>Registration No.</b> {{ activeBatch?.creation_registration_no }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Food Name:</b> {{ activeBatch?.creation_food_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.creation_other_details }}
+                                        </div>
+                                        
+                                        
+                                    </section>    
+
+                                    
+
+                                    <section *ngIf="activeBatchSection == 'inspection'">
+                                        <div class="form-group">
+                                            <b>Process Name:</b> {{ activeBatch?.inspection_process_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Certificate No.:</b> {{ activeBatch?.inspection_certificate_no }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.inspection_other_details }}
+                                        </div>
+                                        
+                                        
+                                    </section>   
+                                    
+                                   
+
+                                    <section *ngIf="activeBatchSection == 'producer'">
+                                        <div class="form-group">
+                                            <b>Temperature Used:</b> {{ activeBatch?.producer_temperature_used }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Humidity:</b> {{ activeBatch?.producer_humidity }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.producer_other_details }}
+                                        </div>
+                                    </section> 
+
+                                    <section *ngIf="activeBatchSection == 'exporter'">
+                                        <div class="form-group">
+                                            <b>Package ID:</b> {{ activeBatch?.exporter_package_id }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Shipment ID:</b> {{ activeBatch?.exporter_shipment_id }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Destination Address:</b> {{ activeBatch?.exporter_destination_address }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Qty:</b> {{ activeBatch?.exporter_qty }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Loading Date:</b> {{ activeBatch?.exporter_loading_date }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.exporter_loading_date }}
+                                        </div>
+                                    </section> 
+
+
+                                    <section *ngIf="activeBatchSection == 'carrier'">
+                                        <div class="form-group">
+                                            <b>Carrier ID:</b> {{ activeBatch?.carrier_id }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Shipment ID:</b> {{ activeBatch?.carrier_shipment_id }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Maintained Temperature:</b> {{ activeBatch?.carrier_maintained_temperature }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Humidity:</b> {{ activeBatch?.carrier_humidity }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Shipped Date:</b> {{ activeBatch?.carrier_shipped_date }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Delivery Date:</b> {{ activeBatch?.carrier_delivery_date }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.carrier_other_details }}
+                                        </div>
+                                    </section> 
+
+                                    <section *ngIf="activeBatchSection == 'distributor'">
+                                        <div class="form-group">
+                                            <b>Certificate ID:</b> {{ activeBatch?.distributor_certificate_id }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Warehouse Name:</b> {{ activeBatch?.distributor_warehouse_name }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Warehouse Address:</b> {{ activeBatch?.distributor_warehouse_address }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Storage Temperature:</b> {{ activeBatch?.distributor_storage_temperature }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Storage Humidity:</b> {{ activeBatch?.distributor_storage_humidity }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Quantity:</b> {{ activeBatch?.distributor_quantity }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.distributor_other_details }}
+                                        </div>
+                                    </section> 
+
+                                   
+
+                                    <section *ngIf="activeBatchSection == 'processor'">
+                                        <div class="form-group">
+                                            <b>Processor Temperature:</b> {{ activeBatch?.processor_temperature }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Internal Batch ID:</b> {{ activeBatch?.processor_internal_batch_id }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Date:</b> {{ activeBatch?.processor_date }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.processor_other_details }}
+                                        </div>
+                                    </section> 
+
+
+                                    <section *ngIf="activeBatchSection == 'retailer'">
+                                        <div class="form-group">
+                                            <b>Expiry Date:</b> {{ activeBatch?.retailer_expiry_date }}
+                                        </div>
+                                        <div class="form-group">
+                                            <b>Temperature:</b> {{ activeBatch?.retailer_temperature }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <b>Other Details:</b> {{ activeBatch?.retailer_other_details }}
+                                        </div>
+                                    </section>
+
+                                    <div class="form-group">
+                                        <img src="assets/plugins/images/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">
+                                    </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            
+            
+
+        <script type="text/javascript">
+            var batchFormInstance, userFormInstance;
+            $(document).ready(function(){
+                userFormInstance = $("#userForm").parsley();
+                batchFormInstance = $("#batchForm").parsley();
+
+                initSwitch();
+            });
+
+            function initSwitch(){
+                /*For User Form Pop Up*/
+                 new Switchery($("#isActive")[0], $("#isActive").data());     
+            }
+
+            
+        </script>
+
+<footer class="footer text-center"> 
+    © 2019 Food SupplyChain by <a href="http://www.rwaltz.com/" target="_blank">rwaltz.com</a> 
+</footer>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    
+   
+
+    <!-- ipfs  -->
+
+    <!-- <script src="assets/https://wzrd.in/standalone/buffer"></script> -->
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+        crossorigin="anonymous"></script>
+
+    
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        // initChart();
+                    });
+                </script>
+                
+    <script type="text/javascript">
+        $('.qr-code-magnify').magnificPopup({
+              type:'image',
+              mainClass: 'mfp-zoom-in'
+        });
+
+        function initChart(data){
+
+            var plotObj = $.plot($("#flot-pie-chart"), data, {
+                series: {
+                    pie: {
+                        innerRadius: 0.5,
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true
+                },
+                color: null,
+                tooltip: true,
+                tooltipOpts: {
+                    content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: false
+                }
+            });
+            }
+    </script>
+
+    
+
+</body>
+
+</html>
+            

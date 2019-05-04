@@ -1,0 +1,58 @@
+Batch Listing: 
+-------------------
+
+http://localhost:3000/api/org.foodsupplychain.system.Batch
+
+User Listing:
+-------------------
+http://localhost:3000/api/org.foodsupplychain.user.Carrier
+http://localhost:3000/api/org.foodsupplychain.user.Creator
+http://localhost:3000/api/org.foodsupplychain.user.Distributor
+http://localhost:3000/api/org.foodsupplychain.user.Exporter
+http://localhost:3000/api/org.foodsupplychain.user.Inspector
+http://localhost:3000/api/org.foodsupplychain.user.Processor
+http://localhost:3000/api/org.foodsupplychain.user.Producer
+http://localhost:3000/api/org.foodsupplychain.user.Retailer
+
+Creator: Add:
+-------------------
+
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \ 
+   "$class": "org.foodsupplychain.user.Carrier", \ 
+   "status": "Active", \ 
+   "user_id": "1", \ 
+   "name": "John", \ 
+   "contact": "898568978", \ 
+   "role": "Carrier", \ 
+   "profile_image": "https://ipfs.io/ipfs/QmXCURS724BWkHJuDktPc65fhyFsFYRyACXv6fa9CxJ6Xv" \ 
+ }' 'http://localhost:3000/api/org.foodsupplychain.user.Carrier'
+
+Creator: Update:
+-------------------
+
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \ 
+     "$class": "org.foodsupplychain.user.Carrier", \ 
+     "status": "Active", \ 
+  \ 
+     "name": "John", \ 
+     "contact": "898568978", \ 
+     "role": "Carrier", \ 
+     "profile_image": "https://ipfs.io/ipfs/QmXCURS724BWkHJuDktPc65fhyFsFYRyACXv6fa9CxJ6Xv" \ 
+   }' '
+
+
+Batch Creation :
+-------------------
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \ 
+   "$class": "org.foodsupplychain.system.BatchCreation", \ 
+   "creator": "org.foodsupplychain.user.Creator#2", \ 
+   "inspector_handler": "org.foodsupplychain.user.Inspector#3", \ 
+   "registration_no": "APON4323", \ 
+   "food_name": "Apple", \ 
+   "other_details": "string" \ 
+  \ 
+ }' 'http://localhost:3000/api/org.foodsupplychain.system.BatchCreation'
+
+Batch Details:
+-------------------
+curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/org.foodsupplychain.system.Batch/be2e397e-c45a-798f-7534-b9bcc07fdf37'

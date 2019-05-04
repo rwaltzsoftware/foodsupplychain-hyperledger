@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.ico">
+    <title>RWaltz</title>
+   
+
+
+    <style type="text/css">
+        .float-right
+        {
+            float: right;
+        }
+
+        .parsley-required , .red{
+            color: red;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0 sidebar">
+            <div class="navbar-header"> 
+                <div class="top-left-part"><a class="logo" href="index.php"><b><img src="assets/plugins/images/rwaltz.png" alt="home" style="width: 188%;" /></b><!-- <span class="hidden-xs"> RWaltz</span> --></a>
+                </div>
+                 <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user"></i> Total Role: <b id="userRole">-</b>
+                        </a>
+                    </li>   
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                            <i class="fa fa-mobile"></i> User Contact: <b id="userContact">-</b>
+                        </a>
+                    </li> 
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                            <!-- <i class="fa fa-qrcode"></i> -->
+                            <img src="assets/plugins/images/users/genu.jpg" id="userImage" class="thumb-lg img-circle" alt="img" style="width: 45px; height: 45px;">
+                            <span id="userName"></span>
+                        </a>
+                        <!-- /.dropdown-messages -->
+                    </li>
+
+                    <li class="dropdown"> 
+                        <a class="dropdown-toggle waves-effect waves-light" id="editUser" data-toggle="dropdown" href="#">
+                            <i class="fa fa-gears"></i>
+                            <div class="notify">
+                                <span class="heartbit"></span>
+                                <span class="point"></span>
+                            </div>
+                        </a>
+                        <!-- /.dropdown-messages -->
+                    </li>
+                    <!-- /.dropdown -->
+
+                  
+                    <!-- /.dropdown -->
+                </ul>
+            </div>
+        </nav>
+        <!-- Left navbar-header -->
+
+        <!-- Left navbar-header end -->
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+
+            <style type="text/css">
+                .verified_info{
+                    color: green;
+                }
+            </style>
+
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Dashboard</h4>
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success" id="divOngoingTransaction" style="display: none">Ongoing Transaction: <span id="linkOngoingTransaction">None</span> </div>
+                    </div>    
+                </div>
+                
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Batches Overview</h3> 
+                            <div class="table-responsive">
+                                <table class="table product-overview" id="userCultivationTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Batch ID</th>
+                                            <th>Batch Initialize</th>
+                                            <th>Farm Inspector</th>
+                                            <th>Producer</th>
+                                            <th>Exporter</th>
+                                            <th>Carrier</th>
+                                            <th>Distributor</th>
+                                            <th>Processor</th>
+                                            <th>Retailer</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         <tr>
+                                             <td colspan="9" align="center">No Data Available</td>
+                                         </tr>                                         
+                                    </tbody>
+                                </table>
+
+                            <!-- Update User Form -->
+                            <div id="userFormModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 170px;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h2 class="modal-title" id="userModelTitle">Update Profile</h2>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form id="updateUserForm" onsubmit="return false;">
+                                            <fieldset style="border:0;">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="fullname">Full Name <i class="red">*</i></label>
+                                                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Name" data-parsley-required="true">
+                                                </div>                              
+                                                <div class="form-group">
+                                                    <label class="control-label" for="contactNumber">Contact No<i class="red">*</i></label>
+                                                    <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="Contact No." data-parsley-required="true" data-parsley-type="digits" data-parsley-length="[10, 15]" maxlength="15">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="role">Role </label>
+                                                    <select class="form-control" id="role" disabled="true" name="role">
+                                                        <option value="">Select Role</option>
+                                                        <option value="FARM_INSPECTION">Farm Inspection</option>
+                                                        <option value="HARVESTER">Harvester</option>
+                                                        <option value="EXPORTER">Exporter</option>
+                                                        <option value="IMPORTER">Importer</option>
+                                                        <option value="PROCESSOR">Processor</option>
+                                                    </select>    
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="isActive">User Status</label>
+                                                    <input type="checkbox" class="js-switch" data-color="#99d683" data-secondary-color="#f96262" id="isActive" name="isActive" data-size="small"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="userProfileHash">Profile Image <i class="red">*</i></label>
+                                                    <span id="imageHash"></span>
+                                                    <input type="file" class="form-control" onchange="handleFileUpload(event);" />
+                                                    <input type="hidden" class="form-control" id="userProfileHash" name="userProfileHash" placeholder="User Profile Hash" data-parsley-required="true" >
+                                                    
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <i style="display: none;" class="fa fa-spinner fa-spin"></i>
+                                         <button type="button" class="btn btn-primary" id="userFormBtn">Submit</button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            
+
+                            <!-- Farm Inspection Form -->
+                            <form id="farmInspectionForm" class="mfp-hide white-popup-block">
+                                <h1>Farm Inspection</h1><br>
+                                <fieldset style="border:0;">   
+                                    <div class="form-group">
+                                        <label class="control-label" for="typeOfSeed">Soil Type</label>
+                                        <input type="text" class="form-control" id="soilType" name="soilType" placeholder="Soil Type" data-parsley-required="true">
+                                    </div>                      
+                                    <div class="form-group">
+                                        <label class="control-label" for="typeOfSeed">Type of Seed</label>
+                                        <input type="text" class="form-control" id="typeOfSeed" name="typeOfSeed" placeholder="type of seed" data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="fertilizer">Fertilizer Used</label>
+                                        <input type="text" class="form-control" id="fertilizerUsed" name="fertilizer" placeholder="fertilizer used" data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="fertilizer">Process Name</label>
+                                        <input type="text" class="form-control" id="processName" name="processName" placeholder="Process Name" data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="fertilizer">Certificate Number</label>
+                                        <input type="text" class="form-control" id="certificateNumber" name="certificateNumber" placeholder="Certificate Number" data-parsley-required="true">
+                                    </div>
+                                     <div class="form-group float-right">
+                                        <button type="reset" class="btn btn-default waves-effect" >Reset</button>
+                                        <button type="button" id="updateFarmInspection" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                             <!-- Producer Form -->
+                            <form id="producerForm" class="mfp-hide white-popup-block ">
+                                <h1>Producing</h1><br>
+                                <fieldset style="border:0;">
+                                                            
+                                    <div class="form-group">
+                                        <label class="control-label" for="cropVariety">Crop Variety</label>
+                                        <input type="text" class="form-control" id="cropVariety" name="cropVariety" placeholder="Crop variety" data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="temperatureUsed">Temperature</label>
+                                        <input type="text" class="form-control" id="temperatureUsed" name="temperatureUsed" placeholder="temperature" data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="humidity">Humidity</label>
+                                        <input type="text" class="form-control" id="humidity" name="humidity" placeholder="humidity" data-parsley-required="true">
+                                    </div>                                
+                                    <div class="form-group float-right">
+                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                        <button type="button" id="updateProducer" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <!-- Exporter Form -->
+                            <form id="exporterForm" class="mfp-hide white-popup-block">
+                                <h1>Exporting</h1><br>
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="exporterDetail">Exporter Details</label>
+                                        <input type="text" class="form-control" id="exporterDetail" name="exporterDetail" placeholder="Exporter Details" data-parsley-required="true">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="packageDetail">Package Details</label>
+                                        <input type="text" class="form-control" id="packageDetail" name="packageDetail" placeholder="Package Details" data-parsley-required="true">
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label class="control-label" for="destinationAddress">Destination Address</label>
+                                        <input type="text" class="form-control" id="destinationAddress" name="destinationAddress" placeholder="Destination Address" data-parsley-required="true">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="loadingDateTime">Loading Date & Time</label>
+                                        <input type="text" class="form-control datepicker-master" id="loadingDateTime" name="loadingDateTime" placeholder="Loading Date & Time" data-parsley-required="true" onkeypress="return false;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="shipID">Ship ID</label>
+                                        <input type="text" class="form-control" id="shipID" name="shipID" placeholder="Ship ID" data-parsley-required="true">
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label class="control-label" for="quantity">Quantity (in Kg)</label>
+                                        <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
+                                    </div> 
+
+                                    
+
+                                    <div class="form-group float-right">
+                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                        <button type="button" id="updateExport" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <!-- Carrier Form -->
+                            <form id="carrierForm" class="mfp-hide white-popup-block">
+                                <h1>Carrier</h1><br>
+                                <fieldset style="border:0;">
+
+                                    <div class="form-group">
+                                        <label class="control-label" for="carrierName">Carrier Name</label>
+                                        <input type="text" class="form-control" id="carrierName" name="carrierName" placeholder="Carrier Name" data-parsley-required="true">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label" for="carrierNo">Carrier No.</label>
+                                        <input type="text" class="form-control" id="carrierNo" name="carrierNo" placeholder="Carrier No." data-parsley-required="true">
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label class="control-label" for="shipmentID">Shipment No.</label>
+                                        <input type="text" class="form-control" id="shipmentID" name="shipmentID" placeholder="Shipment No." data-parsley-required="true">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="shipmentDateTime">Shipment Date & Time</label>
+                                        <input type="text" class="form-control datepicker-master" id="shipmentDateTime" name="shipmentDateTime" placeholder="Shipment Date & Time" data-parsley-required="true" onkeypress="return false;">
+                                    </div>  
+                                    <div class="form-group">
+                                        <label class="control-label" for="maintainedTemperature">Maintained Temperature</label>
+                                        <input type="text" class="form-control" id="maintainedTemperature" name="maintainedTemperature" placeholder="Maintained Temperature" data-parsley-required="true">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="maintainedHumidity">Maintained Humidity</label>
+                                        <input type="text" class="form-control" id="maintainedHumidity" name="maintainedHumidity" placeholder="Maintained Humidity" data-parsley-required="true">
+                                    </div> 
+                                                                   
+                                    
+                                     <div class="form-group float-right">
+                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                        <button type="button" id="updateCarrier" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <!-- Distribution Form -->
+                            <form id="distributorForm" class="mfp-hide white-popup-block">
+                                <h1>Distribution</h1><br>
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="certificateID">Certificate ID</label>
+                                        <input type="text" class="form-control" id="certificateID" name="certificateID" placeholder="Certificate ID" data-parsley-required="true">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="warehouseName">Warehouse Name</label>
+                                        <input type="text" class="form-control" id="warehouseName" name="warehouseName" placeholder="Warehouse Name" data-parsley-required="true" >
+                                    </div>
+                               
+                                    <div class="form-group">
+                                        <label class="control-label" for="warehouseAddress">Warehouse Address</label>
+                                        <input type="text" class="form-control" id="warehouseAddress" name="warehouseAddress" placeholder="Warehouse Address" data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="storageTemperature">Storage temperature</label>
+                                        <input type="text" class="form-control" id="storageTemperature" name="storageTemperature" placeholder="Storage temperature" data-parsley-required="true">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="storageHumidity">Storage Humidity</label>
+                                        <input type="text" class="form-control" id="storageHumidity" name="storageHumidity" placeholder="Storage Humidity" data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="packagingDetail">Packaging Details</label>
+                                        <input type="text" class="form-control" id="packagingDetail" name="packagingDetail" placeholder="Packaging Details" data-parsley-required="true">
+                                    </div>                                                            
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label" for="distribution_quantity">Quantity</label>
+                                        <input type="number" min="1" class="form-control" id="distribution_quantity" name="distribution_quantity" placeholder="Quantity" data-parsley-required="true">
+                                    </div> 
+                                     <div class="form-group float-right">
+                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                        <button type="button" id="updateDistributor" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <!-- Processor Form -->
+                            <form id="processorForm" class="mfp-hide white-popup-block">
+                                <h1>Processor</h1><br>
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="processorName">Processor Name</label>
+                                        <input type="text" class="form-control" id="processorName" name="processorName" placeholder="Processor Name" data-parsley-required="true">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="processTemperature">Process Temperature</label>
+                                        <input type="text" class="form-control" id="processTemperature" name="processTemperature" placeholder="Process Temperature" data-parsley-required="true" >
+                                    </div>
+                               
+                                    <div class="form-group">
+                                        <label class="control-label" for="internalBatchNo">Internal Batch No.</label>
+                                        <input type="text" class="form-control" id="internalBatchNo" name="internalBatchNo" placeholder="Internal Batch No." data-parsley-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="processingDateTime">Processing Date & Time</label>
+                                        <input type="text" class="form-control datepicker-master" id="processingDateTime" name="processingDateTime" placeholder="Processing Date & Time" data-parsley-required="true" onkeypress="return false;">
+                                    </div>  
+                                    <div class="form-group">
+                                        <label class="control-label" for="packageName">Package Name</label>
+                                        <input type="text" class="form-control" id="packageName" name="packageName" placeholder="Package Name" data-parsley-required="true">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="packageAddress">Package Address</label>
+                                        <input type="text" class="form-control" id="packageAddress" name="packageAddress" placeholder="Package Address" data-parsley-required="true">
+                                    </div>
+                                        
+                                     <div class="form-group float-right">
+                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                        <button type="button" id="updateProcessor" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <!-- Retailer Form -->
+                            <form id="retailerForm" class="mfp-hide white-popup-block">
+                                <h1>Retailer</h1><br>
+                                <fieldset style="border:0;">
+                                    <div class="form-group">
+                                        <label class="control-label" for="packageID">Package ID</label>
+                                        <input type="text" class="form-control" id="packageID" name="packageID" placeholder="Package ID" data-parsley-required="true">
+                                    </div>                              
+                                    <div class="form-group">
+                                        <label class="control-label" for="retailerTemperature">Temperature</label>
+                                        <input type="text" class="form-control" id="retailerTemperature" name="retailerTemperature" placeholder="Temperature" data-parsley-required="true" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="retailerExpiryDate">Retailer Expiry Date</label>
+                                        <input type="text" class="form-control datepicker-master" id="retailerExpiryDate" name="retailerExpiryDate" onkeypress="return false;" placeholder="Retailer Expiry Date" data-parsley-required="true">
+                                    </div>      
+                                     <div class="form-group float-right">
+                                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                                        <button type="button" id="updateRetailer" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <!-- /.container-fluid -->
+
+            <div id="batchOverviewModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 170px;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title" id="batchTitle">Batch Details</h2>
+                        </div>
+                        <div class="modal-body">
+                            <fieldset style="border:0;" id="informationFields">
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <script type="text/javascript">
+            var switchery;
+            $(document).ready(function(){
+                initSwitch();
+                initDateTimePicker();
+            });
+
+            function initSwitch(){
+                /*For User Form Pop Up*/
+                switchery = new Switchery($("#isActive")[0], $("#isActive").data());    
+            }
+
+            function initDateTimePicker(){
+                $('.datepicker-master').datetimepicker({
+                    format: 'dd-mm-yyyy hh:ii:ss',
+                    weekStart: 1,
+                    todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    forceParse: 0,
+                    showMeridian: 1,
+                    minuteStep: 1,
+                });
+            }
+        </script>
+        
+<footer class="footer text-center"> 
+    © 2019 Food SupplyChain by <a href="http://www.rwaltz.com/" target="_blank">rwaltz.com</a> 
+</footer>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    
+   
+
+    <script type="text/javascript">
+        var globalContractAbiUrl = {
+            'FoodSupplyChain' : '../build/contracts/FoodSupplyChain.json',
+            'FoodSupplyChainShipingLogistic' : '../build/contracts/FoodSupplyChainShipingLogistic.json',
+            'SupplyChainUser' : '../build/contracts/SupplyChainUser.json',
+        };
+    </script>
+
+    <!-- ipfs  -->
+
+    <!-- <script src="https://wzrd.in/standalone/buffer"></script> -->
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+        crossorigin="anonymous"></script>
+
+                
+    <script type="text/javascript">
+        $('.qr-code-magnify').magnificPopup({
+              type:'image',
+              mainClass: 'mfp-zoom-in'
+        });
+
+        function initChart(data){
+
+            var plotObj = $.plot($("#flot-pie-chart"), data, {
+                series: {
+                    pie: {
+                        innerRadius: 0.5,
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true
+                },
+                color: null,
+                tooltip: true,
+                tooltipOpts: {
+                    content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: false
+                }
+            });
+            }
+    </script>
+
+    
+
+</body>
+
+</html>
+   

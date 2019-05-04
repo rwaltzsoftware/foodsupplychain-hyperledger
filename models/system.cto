@@ -36,6 +36,7 @@ enum BatchStatus {
 asset Batch identified by batch_id {
   o String batch_id
   o BatchStatus batch_status default = 'Creation'
+  
   o String creation_registration_no optional
   o String creation_food_name optional
   o String creation_other_details optional

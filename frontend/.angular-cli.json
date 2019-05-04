@@ -1,0 +1,122 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "frontend"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css", 
+        "assets/css/animate.css", 
+        "assets/css/style.css", 
+        "assets/css/colors/blue.css",
+        "assets/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css",    
+        "assets/plugins/bower_components/datatables/jquery.dataTables.min.css" ,
+        "assets/css/colors/megna.css" , 
+        "assets/css/sweetAlert.css" , 
+        "assets/plugins/bower_components/switchery/dist/switchery.min.css" ,
+        "assets/plugins/bower_components/Magnific-Popup-master/dist/magnific-popup.css", 
+        "assets/css/parsley.css",
+        "assets/plugins/bower_components/timepicker/bootstrap-timepicker.min.css", 
+        "assets/plugins/bower_components/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
+      ],
+      "scripts": [
+        "assets/plugins/bower_components/jquery/dist/jquery.min.js",
+        "assets/bootstrap/dist/js/tether.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js", 
+        "assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js",
+        "assets/js/jquery.slimscroll.js",
+        "assets/js/waves.js",
+        "assets/js/custom.min.js",
+       
+        "assets/bootstrap/dist/js/tether.min.js",
+        "assets/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js",
+        "assets/plugins/bower_components/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js",
+        "assets/plugins/bower_components/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js",
+        "assets/plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js",
+      
+        "assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js",
+      
+        "assets/js/jquery.slimscroll.js",
+      
+        "assets/js/waves.js",
+      
+        "assets/plugins/bower_components/waypoints/lib/jquery.waypoints.js",
+        "assets/plugins/bower_components/counterup/jquery.counterup.min.js",
+      
+
+      
+        "assets/js/custom.min.js",
+        "assets/js/dashboard1.js",
+
+        "assets/plugins/bower_components/flot/excanvas.min.js",
+        "assets/plugins/bower_components/flot/jquery.flot.js",
+        "assets/plugins/bower_components/flot/jquery.flot.pie.js",
+        "assets/plugins/bower_components/flot/jquery.flot.time.js",
+        "assets/plugins/bower_components/flot/jquery.flot.stack.js",
+        "assets/plugins/bower_components/flot/jquery.flot.crosshair.js",
+        "assets/plugins/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js",
+
+
+      
+        "assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js",
+        "assets/plugins/bower_components/datatables/jquery.dataTables.min.js",
+
+        "assets/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js",
+        "assets/plugins/bower_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js",
+
+        "assets/js/parsley.min.js",
+        "assets/js/sweetAlert.js",
+        "assets/js/web3.min.js",
+        "assets/plugins/bower_components/switchery/dist/switchery.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

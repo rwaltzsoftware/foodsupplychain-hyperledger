@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.ico">
+    <title>RWaltz</title>
+   
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <style type="text/css">
+/*!
+Styles for full screen background video demo
+*/
+/* =============================================================================
+  RESETS
+============================================================================= */
+html,
+body,
+div,
+h1,
+p,
+a,
+video {
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+  HTML, BODY
+============================================================================= */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Oxygen", sans-serif;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+  CONTENT
+============================================================================= */
+.content {
+  position: relative;
+  top: 30%;
+  z-index: 2;
+  margin: 0 auto;
+  max-width: 720px;
+  text-align: center;
+}
+
+.content__heading {
+  margin-bottom: 24px;
+  /*color: #272727;*/
+  color: #fbfbfb;
+  font-size: 44px;
+}
+
+.content__teaser {
+  margin-bottom: 24px;
+  /*color: #595959;*/
+  color: #fbfbfb;
+  font-size: 22px;
+}
+
+.content__cta {
+  display: inline-block;
+  margin: 0;
+  padding: 12px 48px;
+  /*color: #ff3c64;*/
+  color: #fbfbfb;
+  font-size: 22px;
+  text-decoration: none;
+  /*border: solid 4px #ff3c64;*/
+  border: solid 4px #fbfbfb;
+}
+
+.content__cta:hover{
+  background-color: #fbfbfb;
+}
+/* =============================================================================
+  VIDEO
+============================================================================= */
+.video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <section id="wrapper" class="login-register">
+
+    <video id="bg_video" class="video" muted loop>
+      <source src="assets/media-new.mp4" type="video/mp4">
+      <!-- <source src="media/demo.ogv" type="video/ogg">
+      <source src="media/demo.webm" type="video/webm"> -->
+    </video><!-- /video -->
+
+    <div class="content">
+      <h1 class="content__heading">Welcome To Food Supply Chain</h1>
+      <p class="content__teaser">Supplychain using Hyperledger</p>
+      <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal" class="content__cta">Login</a>
+    </div>    
+
+    </section>
+   
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#bg_video")[0].play();
+        });
+    </script>
+    <!--Style Switcher -->
+
+   
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+             
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Signin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
+
