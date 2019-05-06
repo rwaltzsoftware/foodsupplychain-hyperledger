@@ -41,26 +41,20 @@
                <ul class="nav navbar-top-links navbar-right pull-right">
                     <li class="dropdown"> 
                         <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
-                            <span class="inine-text"><i class="fa fa-users"></i> Total Users: </span>
-                            <span class="icon-heads"><b id="totalUsers">2</b></span> 
+                            <span class="inine-text"><i class="fa fa-users"></i> Total {{ selectedUserListing }} Users: </span>
+                            <span class="icon-heads"><b >{{ arrUserListingCount }}</b></span> 
                         </a>
                     </li>    
-                    <li class="dropdown"> 
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
-                           
-                             <span class="inine-text"><i class="fa fa-users"></i> Total Roles: </span>
-                            <span class="icon-heads"><b>7</b></span> 
-                        </a>
-                    </li> 
+                     
                     <li class="dropdown"> 
                         <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
                            
                             <span class="inine-text"><i class="fa fa-file"></i> Total Batches: </span>
-                            <span class="icon-heads"><b id="totalBatch">2</b></span> 
+                            <span class="icon-heads"><b id="totalBatch">{{ arrBatchListingCount }}</b></span> 
 
                         </a>
                     </li> 
-                    <li class="dropdown"> 
+                   <!--  <li class="dropdown"> 
                         <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
                             <i class="fa fa-qrcode"></i>
                             <div class="notify">
@@ -101,8 +95,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <!-- /.dropdown-messages -->
-                    </li>
+                    </li> -->
 
                     <li class="dropdown"> 
                         <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
@@ -123,7 +116,7 @@
                                                     <i class="fa fa-user"></i> 
                                                 </button></div>
                                         <div class="mail-contnet">
-                                            <h5>Farm Inspection</h5> 
+                                            <h5>Inspector</h5> 
                                             <!-- <span class="mail-desc">&nbsp;</span> -->
                                         </div>
                                         <span class="clearfix"></span>
@@ -240,17 +233,17 @@
                 <!--row -->
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-lg-4 col-md-4  col-sm-12">
+                    <!-- <div class="col-lg-4 col-md-4  col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Batch Details</h3>
                             <div class="flot-chart">
                                 <div class="flot-chart-content" id="flot-pie-chart"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-8 col-md-8  col-sm-12">
+                    </div> -->
+                    <div class="col-lg-12 col-md-12  col-sm-12">
                         <div class="white-box defualt-box-height">
-                            <a href="javascript:void(0);" id="userFormClick" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light" onclick="javascript:$('#userFormModel').modal()">Create User</a>
+                            <a href="javascript:void(0);" id="userFormClick" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline waves-effect waves-light" onclick="javascript:$('#userFormModel').modal()">Create User</a>
                             <h3 class="box-title">&nbsp;Currently Showing </h3> 
                             <select class="form-control" class="pull-left" [(ngModel)]="selectedUserListing" (ngModelChange)="onUserChangeListing($event)">
                                 <option *ngFor="let userType of arrUserType" [ngValue]="userType.name">{{userType.name}}</option>
@@ -262,6 +255,8 @@
                                     [title]="'Users'"
                                     [items]="arrUserListing"
                                     [itemCount]="arrUserListingCount"
+                                    [indexColumn]="false"
+                                    [limit]="1"
                             >
                                 <data-table-column
                                 [property]="'user_id'"
@@ -365,6 +360,7 @@
                                     [title]="'Batches Overview'"
                                     [items]="arrBatchListing"
                                     [itemCount]="arrBatchListingCount"
+                                    [indexColumn]="false"
                             >
                                 <data-table-column
                                 [property]="'batch_id'"

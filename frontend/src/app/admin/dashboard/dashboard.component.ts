@@ -79,6 +79,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.onUserChangeListing(this.selectedUserListing);
     this.loadBatchListing();
+
+    /* TODO: Search 
+      https://github.com/potjerodekool/angular-demo/blob/master/src/app/app.component.ts
+    */
     
   }
 
