@@ -3,7 +3,7 @@
     "composer": "^0.19.20"
   },
   "name": "foodsupplychain",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "foodsupplychain",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/foodsupplychain.bna",

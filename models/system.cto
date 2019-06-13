@@ -91,6 +91,7 @@ asset Batch identified by batch_id {
   --> Retailer retailer optional
 }
 
+
 transaction BatchCreation{
   --> Creator creator 
   --> Inspector inspector_handler
@@ -103,6 +104,7 @@ transaction BatchCreation{
   
 transaction BatchInspection{
   --> Batch batch
+  --> Creator creator optional
   --> Inspector inspector_handler
   --> Producer producer_handler
   
@@ -113,6 +115,7 @@ transaction BatchInspection{
   
 transaction BatchProducer{
   --> Batch batch
+  --> Creator creator optional
   --> Producer producer_handler
   --> Exporter exporter_handler
   
@@ -124,6 +127,7 @@ transaction BatchProducer{
   
 transaction BatchExporter{
   --> Batch batch
+  --> Creator creator optional
   --> Exporter exporter_handler
   --> Carrier carrier_handler
   
@@ -138,6 +142,7 @@ transaction BatchExporter{
 
 transaction BatchCarrier{
   --> Batch batch
+  --> Creator creator optional
   --> Carrier carrier_handler
   --> Distributor distributor_handler
   
@@ -153,6 +158,7 @@ transaction BatchCarrier{
 
 transaction BatchDistributor{
   --> Batch batch
+  --> Creator creator optional
   --> Distributor distributor_handler
   --> Processor processor_handler
   
@@ -167,6 +173,7 @@ transaction BatchDistributor{
 
 transaction BatchProcessor{
   --> Batch batch
+  --> Creator creator optional
   --> Processor processor_handler
   --> Retailer retailer_handler
   
@@ -178,6 +185,7 @@ transaction BatchProcessor{
 
 transaction BatchRetailer{
   --> Batch batch
+  --> Creator creator optional
   --> Retailer retailer_handler
   
   o DateTime expiry_date optional
