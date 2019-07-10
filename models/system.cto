@@ -45,21 +45,21 @@ asset Batch identified by batch_id {
   o String inspection_certificate_no optional
   o String inspection_other_details optional
   
-  o String producer_temperature_used optional
-  o String producer_humidity optional
+  o Double producer_temperature_used optional
+  o Double producer_humidity optional
   o String producer_other_details optional
   
   o String exporter_package_id optional
   o String exporter_shipment_id optional
   o String exporter_destination_address optional
-  o String exporter_qty optional
+  o Double exporter_qty optional
   o String exporter_other_details optional
   o DateTime exporter_loading_date optional
   
   o String carrier_id optional
   o String carrier_shipment_id optional
-  o String carrier_maintained_temperature optional
-  o String carrier_humidity optional
+  o Double carrier_maintained_temperature optional
+  o Double carrier_humidity optional
   o String carrier_other_details optional
   o DateTime carrier_shipped_date optional
   o DateTime carrier_delivery_date optional
@@ -67,18 +67,18 @@ asset Batch identified by batch_id {
   o String distributor_certificate_id optional
   o String distributor_warehouse_name optional 
   o String distributor_warehouse_address optional
-  o String distributor_storage_temperature optional
-  o String distributor_storage_humidity optional
-  o String distributor_quantity optional
+  o Double distributor_storage_temperature optional
+  o Double distributor_storage_humidity optional
+  o Double distributor_quantity optional
   o String distributor_other_details optional
   
-  o String processor_temperature optional
+  o Double processor_temperature optional
   o String processor_internal_batch_id optional
   o DateTime processor_date optional
   o String processor_other_details optional
   
   o DateTime retailer_expiry_date optional
-  o String retailer_temperature optional
+  o Double retailer_temperature optional
   o String retailer_other_details optional
   
   --> Creator creator optional

@@ -12,9 +12,10 @@ enum UserStatus {
 abstract participant User identified by user_id {
     o String user_id
     o String name
-  o String contact
-  o String role
-  o String profile_image
+    o String contact
+    o String role
+    o String profile_image
+    
 }
 
 participant Creator extends User {
